@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Hermes : le brief BI dans Telegram</title>
+<meta name="description" content="Lab Hermes Agent : un agent IA installé sur un VPS livre un brief BI chiffré dans Telegram. Version web interactive des cinq tests, sur données fictives de démonstration.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+
+<header class="bandeau-titre">
+  <div class="bandeau-titre__texte">
+    <p class="surtitre">Kairo Lab / Assistant BI dans Telegram</p>
+    <h1>Le CA progresse, la marge recule</h1>
+    <p>Un agent Hermes sur VPS prépare le brief, vérifie les calculs et refuse d'inventer la cause</p>
+  </div>
+  <nav class="onglets" role="tablist" aria-label="Pages du lab">
+    <button role="tab" id="onglet-brief" aria-controls="page-brief" data-page="brief">Brief réseau</button>
+    <button role="tab" id="onglet-lyon" aria-controls="page-lyon" data-page="lyon">Exploration Lyon</button>
+    <button role="tab" id="onglet-tests" aria-controls="page-tests" data-page="tests">Cinq tests</button>
+    <button role="tab" id="onglet-installation" aria-controls="page-installation" data-page="installation">Installation et sécurité</button>
+  </nav>
+</header>
+
+<p class="avertissement" role="note"><strong>Données fictives de démonstration</strong> : réseau de 3 magasins sur 2 mois, aucune donnée client, aucune connexion à un système métier. L'assistant est un essai de lab, pas un service en production.</p>
+
+<main id="contenu">
+  <noscript><p class="info">Cette page a besoin de JavaScript pour afficher les chiffres et les graphiques.</p></noscript>
+
+  <!-- 1. Brief réseau -->
+  <section class="page" id="page-brief" role="tabpanel" aria-labelledby="onglet-brief" tabindex="-1">
+    <div class="page__tete">
+      <h2>Septembre 2026 : réseau de magasins</h2>
+      <p class="sous-titre">Comparaison avec août · montants HT · le dashboard envoyé en capture dans Telegram</p>
+    </div>
+    <div class="kpis" id="kpis-reseau"></div>
+    <div class="grille-2">
+      <article class="carte">
+        <h3>Lyon fait monter le CA mais perd de la marge</h3>
+        <p class="sous-titre">Marge brute par magasin · août puis septembre</p>
+        <div class="graphe" id="g-magasins"></div>
+      </article>
+      <article class="carte">
+        <h3>Détail par magasin</h3>
+        <p class="sous-titre">Taux de marge brute = marge brute / CA · variations calculées avant arrondi</p>
+        <div class="tableau-defile"><table class="tableau" id="t-magasins"></table></div>
+      </article>
+    </div>
+    <article class="carte carte--bot">
+      <div class="bulle-tete"><span class="avatar" aria-hidden="true">K</span><span><strong>Assistant BI</strong> · réponse au test 1</span></div>
+      <div id="brief-bot"></div>
+    </article>
+    <p class="info">Périmètre disponible : 3 magasins, 2 mois, CA et taux de marge brute. Non fournis : volumes, prix, remises, coûts d'achat et mix produits. L'assistant ne peut donc pas établir de cause.</p>
+  </section>
+
+  <!-- 2. Exploration Lyon -->
+  <section class="page" id="page-lyon" role="tabpanel" aria-labelledby="onglet-lyon" tabindex="-1" hidden>
+    <div class="page__tete">
+      <h2>Plus de ventes, moins de marge : où se concentre l'écart ?</h2>
+      <p class="sous-titre">Lyon, août → septembre · 4 produits, 8 observations · rejoue la mini-application ouverte depuis le bot</p>
+    </div>
+    <div class="carte carte--filtres">
+      <p class="etiquette" id="lib-produits">Produits</p>
+      <div class="puces" role="group" aria-labelledby="lib-produits" id="puces-produits"></div>
+      <div class="actions-filtres">
+        <button type="button" class="bouton-lien" id="tout-produits">Tous les produits</button>
+        <button type="button" class="bouton-lien" id="reinit-produits">Revenir à A, C et D</button>
+      </div>
+      <p class="selection" id="lib-selection" aria-live="polite"></p>
+    </div>
+    <div class="kpis" id="kpis-lyon"></div>
+    <div class="grille-2">
+      <article class="carte">
+        <div class="carte__tete">
+          <div>
+            <h3 id="titre-mesure">Marge brute par produit</h3>
+            <p class="sous-titre">Août puis septembre · cliquez sur un produit pour l'ajouter ou le retirer</p>
+          </div>
+          <label class="choix">Mesure
+            <select id="choix-mesure">
+              <option value="marge">Marge brute</option>
+              <option value="ca">CA net HT</option>
+              <option value="cout">Coût des ventes</option>
+            </select>
+          </label>
+        </div>
+        <div class="graphe" id="g-produits"></div>
+      </article>
+      <article class="carte">
+        <h3>Contributions à la variation de marge</h3>
+        <p class="sous-titre">Septembre − août, par produit sélectionné · contributions comptables, pas des causes</p>
+        <div class="graphe" id="g-contrib"></div>
+        <p class="note" id="note-contrib"></p>
+      </article>
+    </div>
+    <article class="carte carte--bot">
+      <div class="bulle-tete"><span class="avatar" aria-hidden="true">K</span><span><strong>Assistant BI</strong> · « Analyser ma sélection »</span></div>
+      <div id="analyse-bot" aria-live="polite"></div>
+    </article>
+    <p class="note">Produit B : valeurs déduites des totaux de Lyon dans le dashboard réseau (l'article détaille A, C et D). Tous produits confondus, le jeu retrouve ces totaux.</p>
+  </section>
+
+  <!-- 3. Cinq tests -->
+  <section class="page" id="page-tests" role="tabpanel" aria-labelledby="onglet-tests" tabindex="-1" hidden>
+    <div class="page__tete">
+      <h2>Cinq tests, des résultats vérifiables</h2>
+      <p class="sous-titre">Chaque test vise un risque précis : erreur de calcul, cause inventée, donnée absente, chiffre faux, perte du fil</p>
+    </div>
+    <div class="kpis kpis--4" id="kpis-tests"></div>
+    <div class="tests" id="liste-tests"></div>
+    <p class="info">Cinq essais sur des jeux fictifs ne constituent pas une validation générale. Un écart d'arrondi de 0,01 point a été observé entre le dashboard et le texte au test 5 ; montants et périmètre concordent.</p>
+  </section>
+
+  <!-- 4. Installation et sécurité -->
+  <section class="page" id="page-installation" role="tabpanel" aria-labelledby="onglet-installation" tabindex="-1" hidden>
+    <div class="page__tete">
+      <h2>Du VPS au bot : ce qui est fait, ce qui reste à faire</h2>
+      <p class="sous-titre">Le bot fonctionne ; cela ne suffit pas à qualifier l'installation de prête pour la production</p>
+    </div>
+    <div class="kpis kpis--3" id="kpis-installation"></div>
+    <div class="grille-2 grille-2--large">
+      <article class="carte">
+        <h3>Le parcours d'installation</h3>
+        <p class="sous-titre">Ubuntu 24.04 · un compte administrateur, un compte de service sans sudo</p>
+        <ol class="etapes" id="etapes"></ol>
+      </article>
+      <article class="carte">
+        <h3>Qui parle à qui</h3>
+        <p class="sous-titre">Tous les flux sont initiés par le VPS : aucun port web entrant pour le bot</p>
+        <div class="flux" id="flux"></div>
+        <h3 class="titre-bloc">Garde-fous retenus</h3>
+        <ul class="garde-fous">
+          <li><strong>Accès restreint</strong> : seul un identifiant Telegram numérique autorisé peut écrire au bot.</li>
+          <li><strong>Moindre privilège</strong> : compte hermes sans sudo, outils optionnels non installés, validations conservées.</li>
+          <li><strong>Secrets hors des captures</strong> : jetons Telegram et fournisseur, fichier .env et journaux bruts jamais publiés.</li>
+          <li><strong>Contenus = données</strong> : une page, un document ou un skill téléchargé n'autorise aucune commande.</li>
+          <li><strong>Inférence externe</strong> : héberger Hermes sur le VPS ne rend pas le modèle local ; les messages partent chez le fournisseur.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="pied">
+  <p>Source : jeux fictifs du lab, chiffres relevés dans l'article « Installer Hermes : du VPS au brief BI dans Telegram ». <a href="video.html">Le projet en vidéo (40 s)</a> · <a href="https://github.com/cnanaj-wq/hermes-brief-bi">Le dépôt GitHub</a></p>
+  <p>Cédric NANA, consultant Data Analytics.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
