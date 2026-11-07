@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; media-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Hermes en vidéo</title>
+<meta name="description" content="Présentation en vidéo (40 s, sans voix off) du lab Hermes Agent : un agent IA sur VPS livre un brief BI chiffré dans Telegram, sur données fictives.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .bandeau-titre { padding-bottom: var(--e-5); }
+  .video { max-width: 960px; margin: 0 auto; padding: var(--e-5) var(--e-4) var(--e-6); display: grid; gap: var(--e-5); grid-template-columns: minmax(0, 420px) 1fr; align-items: start; }
+  .video video { width: 100%; height: auto; aspect-ratio: 1080 / 1350; background: #000; border-radius: var(--rayon); box-shadow: var(--ombre); }
+  .video h2 { font-size: var(--t-xl); line-height: 1.2; margin-bottom: var(--e-2); }
+  .video p { max-width: 60ch; margin-bottom: var(--e-3); }
+  .video ul { margin: 0 0 var(--e-4) 1.1em; padding: 0; display: grid; gap: var(--e-1); }
+  .video .liens { display: flex; flex-wrap: wrap; gap: var(--e-2); }
+  .video .liens a { text-decoration: none; }
+  @media (max-width: 800px) { .video { grid-template-columns: 1fr; } .video video { max-width: 420px; margin: 0 auto; } }
+</style>
+</head>
+<body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+
+<header class="bandeau-titre">
+  <div class="bandeau-titre__texte">
+    <p class="surtitre">Kairo Lab / Assistant BI dans Telegram</p>
+    <h1>Hermes : le brief BI dans Telegram</h1>
+    <p>Le projet en vidéo · 40 secondes, sans voix off</p>
+  </div>
+</header>
+
+<main id="contenu" class="video">
+  <video controls playsinline preload="metadata" poster="video/apercu.jpg">
+    <source src="video/hermes-brief-bi.mp4" type="video/mp4">
+    Votre navigateur ne lit pas cette vidéo. <a href="video/hermes-brief-bi.mp4">Téléchargez-la</a>.
+  </video>
+  <div>
+    <h2>Le CA monte de 8,1 %, la marge recule : l'assistant trouve où, et refuse d'inventer pourquoi</h2>
+    <p>En 40 secondes, le parcours du lab : un agent Hermes installé sur un VPS reçoit une capture de dashboard dans Telegram,
+      prépare le brief chiffré, résiste à une conclusion trop rapide et repère une erreur de calcul.</p>
+    <ul>
+      <li>Lyon concentre la baisse : −11 760 € de marge malgré un CA en hausse de 15 %.</li>
+      <li>Une erreur volontaire de 10 000 € repérée : 138 000 × 0,28 = 38 640 €.</li>
+      <li>Aucun port web entrant : le VPS interroge Telegram en polling.</li>
+    </ul>
+    <p>Données fictives de démonstration. Essai de lab : le durcissement de l'installation reste à terminer, ce n'est pas un service en production.</p>
+    <div class="liens">
+      <a class="bouton-secondaire" href="./">Ouvrir le dashboard interactif</a>
+      <a class="bouton-secondaire" href="https://github.com/cnanaj-wq/hermes-brief-bi">Voir le projet sur GitHub</a>
+    </div>
+  </div>
+</main>
+
+<footer class="pied">
+  <p>Vidéo sans voix off ni musique. Jeux de données fictifs du lab, aucune donnée client.</p>
+  <p>Cédric NANA, consultant Data Analytics.</p>
+</footer>
+</body>
+</html>

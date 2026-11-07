@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.claude/
+.hyperframes/
+node_modules/
+Thumbs.db
