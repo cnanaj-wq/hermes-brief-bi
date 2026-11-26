@@ -11,7 +11,7 @@
     </td>
     <td valign="top">
       <a href="https://cnanaj-wq.github.io/hermes-brief-bi/video.html"><b>Revenue up, margin down: the assistant finds where, and refuses to invent why</b></a><br><br>
-      Cédric NANA · Data Analytics Consultant<br>
+      Cédric NANA — Expert BI & Data | Analytics & AI Automation<br>
       ▷ 0:40 · no voice-over (on-screen text in French)<br><br>
       A Hermes agent on a VPS, a Telegram bot, five business tests on fictional data: the lab in 40 seconds.
     </td>
@@ -171,4 +171,4 @@ Lyon's totals (the article details A, C and D). No working folder of the lab is 
 
 ---
 
-Cédric NANA, Data Analytics Consultant.
+Cédric NANA — Expert BI & Data | Analytics & AI Automation.

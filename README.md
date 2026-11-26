@@ -11,7 +11,7 @@
     </td>
     <td valign="top">
       <a href="https://cnanaj-wq.github.io/hermes-brief-bi/video.html"><b>Le CA monte, la marge recule : l'assistant trouve où, et refuse d'inventer pourquoi</b></a><br><br>
-      Cédric NANA · Consultant Data Analytics<br>
+      Cédric NANA — Expert BI & Data | Analytics & AI Automation<br>
       ▷ 0:40 · vidéo sans voix off<br><br>
       Un agent Hermes sur VPS, un bot Telegram, cinq tests métier sur données fictives : le lab en 40 secondes.
     </td>
@@ -171,4 +171,4 @@ produit B sont déduites des totaux de Lyon (l'article détaille A, C et D). Auc
 
 ---
 
-Cédric NANA, consultant Data Analytics.
+Cédric NANA — Expert BI & Data | Analytics & AI Automation.
